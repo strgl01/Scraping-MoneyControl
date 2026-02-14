@@ -34,9 +34,9 @@ class Database():
 
     def create_table(self):
         try:
-            
-            self.cursor.execute(''' CREATE TABLE IF NOT EXISTS loser (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(25), price FLOAT(6,2), date DATE)''')
-            self.cursor.execute(''' CREATE TABLE IF NOT EXISTS gainer (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(25), price FLOAT(6,2), date DATE)''')
+            # altered table defination in final commit
+            self.cursor.execute(''' CREATE TABLE IF NOT EXISTS loser (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), price DECIMAL(12,2), date DATE)''')
+            self.cursor.execute(''' CREATE TABLE IF NOT EXISTS gainer (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(25), price DECIMAL(12,2), date DATE)''')
         
         except Exception as ex:
 
@@ -49,8 +49,8 @@ class Database():
     def add_data(self, table, data):
 
         try:
-
-            self.query = f'INSERT INTO {table} ( name, price, date) VALUES ( %s, %s, %s)'
+            # added fn to get sys.date in final commit
+            self.query = f'INSERT INTO {table} ( name, price, date) VALUES ( %s, %s, CURDATE())'
             self.cursor.executemany(self.query, data)
             self.conn.commit()
             self.conn.close()

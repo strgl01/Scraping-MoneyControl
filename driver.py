@@ -15,13 +15,18 @@ class Driver():
     options = Options()
     options.set_preference('dom.webnotification.enabled', False)
 
+    # This was added in final commit because some notifications were still getting popped.
+
+    options.set_preference("dom.push.enabled", False)
+
     def __init__(self):
-        self.create()
+        # functionality of fn was changed to support OOP 
+        self.driver = self.create()
 
     def create(self):
         try:
-            self.driver = webdriver.Firefox(service=Driver.service, options=Driver.options)
-            return self.driver
+            driver = webdriver.Firefox(service=Driver.service, options=Driver.options)
+            return driver
         except Exception as ex:
             print(f'{ex!r}')
             self.driver.close()
