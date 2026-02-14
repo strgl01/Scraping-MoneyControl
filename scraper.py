@@ -11,7 +11,7 @@ import time
 This scrapper runs the moneycontrol navigates to Top Losers window and extract the the name and price of the stocks and stores it in db. This can be run daily at EOD to keep the data locally for further analysis.
 '''
 
-class scrapper():
+class scraper():
 
 
     '''
@@ -74,7 +74,7 @@ class scrapper():
         self.db = Database()
         self.db.add_data('loser', self.data)
 
-obj = scrapper()
+obj = scraper()
 obj.navigate()
 time.sleep(60)
 obj.extract()
