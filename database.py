@@ -1,4 +1,4 @@
-import mysql.connector
+yourimport mysql.connector
 
 
 """
@@ -12,7 +12,7 @@ class Database():
     """
     host = 'localhost'
     user = 'root'
-    passw = 'Wel2046come@'
+    passw = 'UseYourPassword@'
     database = 'moneycontrol'
     """ 
     This meathod initialise the db and give the cursor to execute queries in future and create table fn is also called
